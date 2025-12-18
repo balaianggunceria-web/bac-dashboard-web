@@ -5,6 +5,7 @@ import { admin_login,messageClear } from './../../store/Reducers/authReducer';
 import { PropagateLoader } from 'react-spinners';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import logo from '../../assets/logo_balai_anggun_ceria2.png'
 
 const AdminLogin = () => {
 
@@ -57,7 +58,7 @@ const AdminLogin = () => {
                 <div className='bg-[#28DF99] p-4 rounded-md'>
                     <div className='h-[70px] flex justify-center items-center'>
                         <div className='w-[300px] h-[100px]'>
-                            <img className='w-full h-full' src="http://localhost:3000/images/logo_balai_anggun_ceria2.png" alt="image" />
+                            <img className='w-full h-full' src={logo} alt="logo_balai_anggun_ceria2" />
                         </div>
                     </div>
                     <form onSubmit={submit}>
