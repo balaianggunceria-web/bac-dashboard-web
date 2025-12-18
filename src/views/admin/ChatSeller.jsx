@@ -7,6 +7,8 @@ import { Link, useParams } from 'react-router-dom';
 import { FaRegFaceGrinHearts } from "react-icons/fa6";
 import {socket} from '../../utils/utils'
 import toast from 'react-hot-toast';
+import logodemo from '../../assets/demo.jpg';
+import logoadmin from '../../assets/admin.jpg'
 
 const ChatSeller = () => {
 
@@ -133,7 +135,7 @@ const ChatSeller = () => {
                     <div ref={scrollRef} className='w-full flex justify-start items-center'>
                         <div className='flex justify-start items-start gap-2 md:px-3 py-2 max-w-full lg:max-w-[85%]'>
                             <div>
-                                <img className='w-[38px] h-[38px] border-2 border-white rounded-full max-w-[38px] p-[3px]' src="http://localhost:3001/images/demo.jpg" alt="" />
+                                <img className='w-[38px] h-[38px] border-2 border-white rounded-full max-w-[38px] p-[3px]' src={logodemo} alt="demo" />
                             </div>
                             <div className='flex justify-center items-start flex-col w-full bg-blue-500 shadow-lg shadow-blue-500/50 text-white py-1 px-2 rounded-sm'>
                             <span>{m.message} </span>
@@ -150,7 +152,7 @@ const ChatSeller = () => {
                         <span>{m.message} </span>
                         </div> 
                         <div>
-                            <img className='w-[38px] h-[38px] border-2 border-white rounded-full max-w-[38px] p-[3px]' src="http://localhost:3001/images/admin.jpg" alt="" />
+                            <img className='w-[38px] h-[38px] border-2 border-white rounded-full max-w-[38px] p-[3px]' src={logoadmin} alt="admin" />
                         </div>
 
                     </div> 

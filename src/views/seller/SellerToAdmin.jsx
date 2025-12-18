@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { get_admin_message, get_seller_message, get_sellers, send_message_seller_admin, updateAdminMessage, messageClear  } from '../../store/Reducers/chatReducer'
+import logoadmin from '../../assets/admin.jpg';
+import logodemo from '../../assets/demo.jpg';
 
 import {socket} from '../../utils/utils'
 
@@ -58,7 +60,7 @@ const SellerToAdmin = () => {
                             <div className='flex justify-start items-center gap-3'>
                                     <div className='relative'>
                                     <img className='w-[45px] h-[45px] border-green-500 border-2 max-w-[45px] p-[2px] rounded-full' 
-                                    src="http://localhost:3001/images/admin.jpg" alt="" />
+                                    src={logoadmin} alt="admin" />
                                     <div className='w-[10px] h-[10px] bg-green-500 rounded-full absolute right-0 bottom-0'></div>
                                     </div>
                                     <h2 className='text-base text-white font-semibold'>Support</h2>
@@ -75,7 +77,7 @@ const SellerToAdmin = () => {
 <div  ref={scrollRef} key={i} className='w-full flex justify-start items-center'>
         <div className='flex justify-start items-start gap-2 md:px-3 py-2 max-w-full lg:max-w-[85%]'>
             <div>
-                <img className='w-[38px] h-[38px] border-2 border-white rounded-full max-w-[38px] p-[3px]' src="http://localhost:3001/images/demo.jpg" alt="" />
+                <img className='w-[38px] h-[38px] border-2 border-white rounded-full max-w-[38px] p-[3px]' src={logodemo} alt="demo" />
             </div>
             <div className='flex justify-center items-start flex-col w-full bg-blue-500 shadow-lg shadow-blue-500/50 text-white py-1 px-2 rounded-sm'>
             <span>{m.message} </span>
@@ -93,7 +95,7 @@ const SellerToAdmin = () => {
                         <span>{m.message}  </span>
                         </div> 
                         <div>
-                            <img className='w-[38px] h-[38px] border-2 border-white rounded-full max-w-[38px] p-[3px]' src="http://localhost:3001/images/admin.jpg" alt="" />
+                            <img className='w-[38px] h-[38px] border-2 border-white rounded-full max-w-[38px] p-[3px]' src={logoadmin} alt="admin" />
                         </div>
 
                     </div> 
