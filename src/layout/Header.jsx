@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaList } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
+import logoadmin from '../assets/admin.jpg'
 
 const Header = ({showSidebar, setShowSidebar}) => {
 
@@ -31,7 +32,7 @@ const Header = ({showSidebar, setShowSidebar}) => {
                                  <span className='text-[14px] w-full font-normal'>{ userInfo.role }</span>
                             </div>
                             {
-                            userInfo.role === 'admin' ? <img className='w-[45px] h-[45px] rounded-full overflow-hidden' src="http://localhost:3001/images/admin.jpg" alt="" />  : <img className='w-[45px] h-[45px] rounded-full overflow-hidden' src={userInfo.image} alt="" />
+                            userInfo.role === 'admin' ? <img className='w-[45px] h-[45px] rounded-full overflow-hidden' src={logoadmin} alt="admin.jpg" />  : <img className='w-[45px] h-[45px] rounded-full overflow-hidden' src={userInfo.image} alt="" />
                             }
 
                         </div>
