@@ -139,20 +139,25 @@ export const change_password  = createAsyncThunk(
 )
 //end method
 
-    const returnRole = (token) => {
-        if (token) {
-            const decodeToken = jwtDecode(token)
-            const expireTime = new Date(decodeToken.exp * 1000)
-            if (new Date() > expireTime) {
-                localStorage.removeItem('accessToken')
-                return ''
-            } else {
-                return decodeToken.role
-            }
-        } else {
-            return ''
+const returnRole = (token) => {
+    if (!token || token === "undefined") return "";
+
+    try {
+        const decodeToken = jwtDecode(token);
+        const expireTime = new Date(decodeToken.exp * 1000);
+
+        if (new Date() > expireTime) {
+            localStorage.removeItem('accessToken');
+            return "";
         }
+
+        return decodeToken.role || "";
+    } catch (error) {
+        localStorage.removeItem('accessToken');
+        return "";
     }
+};
+//end method
 
 export const authReducer = createSlice({
     name: 'auth',

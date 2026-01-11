@@ -25,6 +25,7 @@ const Profile = () => {
     useEffect(() => {
         if(successMessage){
             toast.success(successMessage)
+            setEditMode(false);
             messageClear()
         }
     },[successMessage])
@@ -78,6 +79,8 @@ const Profile = () => {
             dispatch(messageClear());
         }
     },[successMessage,errorMessage])
+
+    const [editMode, setEditMode] = useState(false);
 
     return (
         <div className='px-2 lg:px-7 py-5'>
@@ -138,7 +141,7 @@ const Profile = () => {
                                     <span>{userInfo.status} </span>
                                 </div>
                                 <div className='flex gap-2 text-black'>
-                                    <span>Payment Account : </span> 
+                                    <span>Payment Account : </span>
                                     <p>
                                     {
                                         userInfo.payment === 'active' ? <span className='bg-red-500 text-white text-xs cursor-pointer 
@@ -152,7 +155,7 @@ const Profile = () => {
 
                         <div className='px-0 md:px-5 py-2'>
                             {
-                                !userInfo?.shopInfo ? <form onSubmit={add}>
+                                (!userInfo?.shopInfo || editMode) ? (<form onSubmit={add}>
                             <div className='flex flex-col w-full gap-1 mb-2'>
                                 <label htmlFor="Shop">Shop Name</label>
                                 <input value={state.shopName} onChange={inputHadle} className='px-4 py-2 focus:border-indigo-200 outline-none bg-[#6a5fdf]
@@ -184,10 +187,22 @@ const Profile = () => {
                                             }
                             
                             </button>
-                                </form> : 
+                                </form> ) : (
                                 <div className='flex justify-between text-sm flex-col gap-2 p-4 bg-[#9ff1b8] rounded-md relative'>
-                                <span className='p-[6px] bg-green-700 rounded hover:shadow-lg
-                                hover:shadow-blue-500/50 absolute right-2 top-2 cursor-pointer'> <FaUserEdit /> </span>
+                                <span
+                                    onClick={() => {
+                                    setEditMode(true);
+                                    setState({
+                                        shopName: userInfo.shopInfo.shopName,
+                                        division: userInfo.shopInfo.division,
+                                        district: userInfo.shopInfo.district,
+                                        sub_district: userInfo.shopInfo.sub_district,
+                                    });
+                                }}
+                                className='p-[6px] bg-green-700 rounded cursor-pointer absolute right-2 top-2'
+                                >
+                                <FaUserEdit />
+                                </span>
                                 <div className='flex gap-2 text-black'>
                                     <span>Shop Name : </span>
                                     <span>{userInfo.shopInfo?.shopName}</span>
@@ -205,7 +220,7 @@ const Profile = () => {
                                     <span>{userInfo.shopInfo?.sub_district}</span>
                                 </div>
                             </div>
-                            }
+                            )}
 
                         </div>
                     </div>
