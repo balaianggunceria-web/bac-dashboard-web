@@ -248,7 +248,13 @@ export const authReducer = createSlice({
             state.loader = false;
             state.successMessage = action.payload
         })
-
+        .addCase(logout.fulfilled, (state) => {
+            state.token = null
+            state.role = ''
+            state.userInfo = ''
+            state.successMessage = ''
+            state.errorMessage = ''
+        })       
     }
 })
 
