@@ -3,9 +3,9 @@ const local = 'http://localhost:5000'
 const production = 'https://bac-backend-web.onrender.com'
 
 let api_url = ''
-let MODE = 'pro'
+let mode = 'pro'
 
-if (MODE === 'pro') {
+if (mode === 'pro') {
     api_url = production
 }else{
     api_url = local
